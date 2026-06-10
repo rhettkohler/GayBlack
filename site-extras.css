@@ -1,0 +1,83 @@
+.splash-gate {
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(32, 199, 255, 0.18), transparent 28rem),
+    rgba(5, 6, 10, 0.94);
+  backdrop-filter: blur(18px);
+}
+
+.splash-dialog {
+  width: min(34rem, 100%);
+  padding: clamp(1.5rem, 5vw, 2.4rem);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.5rem;
+  background: #10131d;
+  box-shadow: var(--shadow);
+}
+
+.splash-dialog p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.splash-dialog h2 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+}
+
+.review-band {
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.1rem, 5vw, 5rem);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent),
+    #080a0f;
+  border-top: 1px solid var(--line);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.review-card {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.review-stars {
+  color: var(--magenta);
+  font-size: 1.15rem;
+  letter-spacing: 0;
+}
+
+.review-card blockquote {
+  margin: 0;
+  color: #ede9f4;
+  line-height: 1.6;
+}
+
+.review-card figcaption {
+  margin: 0;
+  color: var(--muted);
+}
+
+.review-note {
+  max-width: 48rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+}

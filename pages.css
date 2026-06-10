@@ -208,6 +208,36 @@
   left: -9999px;
 }
 
+.form-status {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: #080a0f;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.form-status.pending {
+  border-color: rgba(32, 199, 255, 0.5);
+  color: var(--cyan);
+}
+
+.form-status.error {
+  border-color: rgba(255, 47, 155, 0.58);
+  color: #ffd8eb;
+}
+
+.fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.intake-form button:disabled {
+  opacity: 0.62;
+  cursor: wait;
+}
+
 @media (max-width: 850px) {
   .form-layout,
   .image-feature,

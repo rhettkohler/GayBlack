@@ -32,7 +32,8 @@
 .review-band {
   padding: clamp(4.5rem, 9vw, 8rem) clamp(1.1rem, 5vw, 5rem);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent),
+    linear-gradient(90deg, rgba(8, 10, 15, 0.96), rgba(8, 10, 15, 0.8)),
+    url("assets/rumor-log.svg") center / cover,
     #080a0f;
   border-top: 1px solid var(--line);
 }

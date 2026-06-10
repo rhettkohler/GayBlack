@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Recovery intake support desk</title>
+  <desc id="desc">A calm recovery intake desk with secure chat bubbles, a headset responder, and privacy shield visuals.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop offset="0" stop-color="#05060a"/><stop offset=".62" stop-color="#11151a"/><stop offset="1" stop-color="#1c1020"/></linearGradient>
+    <linearGradient id="bubble" x1="0" x2="1"><stop offset="0" stop-color="#20c7ff"/><stop offset="1" stop-color="#ff2f9b"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="250" y="160" width="470" height="120" rx="32" fill="#10303a" stroke="#20c7ff" stroke-opacity=".5"/>
+  <rect x="310" y="315" width="560" height="130" rx="34" fill="#2b1430" stroke="#ff2f9b" stroke-opacity=".5"/>
+  <rect x="250" y="485" width="410" height="105" rx="30" fill="#172713" stroke="#39e77b" stroke-opacity=".5"/>
+  <path d="M315 210h340M375 365h420M315 535h280" stroke="#f7f3ea" stroke-opacity=".34" stroke-width="13"/>
+  <rect x="900" y="170" width="270" height="360" rx="135" fill="#18131a" stroke="#ffc94d" stroke-width="4"/>
+  <circle cx="1035" cy="290" r="72" fill="#2d1d27" stroke="#20c7ff" stroke-opacity=".7" stroke-width="5"/>
+  <path d="M930 530c20-150 190-150 215 0" fill="#11151a"/>
+  <path d="M1110 295c75 10 110 54 112 126" fill="none" stroke="#ff2f9b" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="1220" cy="428" r="20" fill="#ff2f9b"/>
+  <rect x="860" y="580" width="430" height="170" rx="18" fill="#080a0f" stroke="#20c7ff" stroke-opacity=".5"/>
+  <path d="M910 630h310M910 675h240M910 720h280" stroke="#20c7ff" stroke-opacity=".5" stroke-width="10"/>
+  <path d="M1310 180l95 36v96c0 76-40 127-95 160-55-33-95-84-95-160v-96z" fill="none" stroke="#39e77b" stroke-width="7" filter="url(#glow)"/>
+  <path d="M1310 270v68" stroke="#39e77b" stroke-width="12" stroke-linecap="round"/><rect x="1277" y="328" width="66" height="52" rx="10" fill="#39e77b"/>
+  <path d="M90 720h1420" stroke="url(#bubble)" stroke-width="8" filter="url(#glow)"/>
+</svg>

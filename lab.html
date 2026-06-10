@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Defense Lab | Gay Black Men Hackers</title>
+    <meta name="description" content="Interactive defensive security games and tools from Gay Black Men Hackers.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="site-extras.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Gay Black Men Hackers home">
+        <img src="assets/generated-emblem.png" alt="" width="48" height="48">
+        <span>GBMH</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="index.html#ops">Ops</a>
+        <a href="services.html">Services</a>
+        <a href="field-guide.html">Guide</a>
+        <a href="lab.html">Defense Lab</a>
+        <a href="request-unhacking.html">Request Unhacking</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero compact guide-hero">
+        <p class="eyebrow">Interactive range</p>
+        <h1>Defense Lab</h1>
+        <p>
+          Play through quick defensive drills: spot suspicious messages, stabilize an incident timeline,
+          test password habits, and watch the network pulse.
+        </p>
+      </section>
+
+      <section class="lab-band">
+        <div class="section-heading">
+          <p class="section-kicker">Training modules</p>
+          <h2>Small games for real-world habits.</h2>
+        </div>
+        <div class="game-grid">
+          <article class="game-card" data-game="phish">
+            <h3>Phish or Friend</h3>
+            <p id="phish-prompt">Loading message...</p>
+            <div class="choice-row">
+              <button data-answer="phish">Phish</button>
+              <button data-answer="safe">Safe</button>
+            </div>
+            <div class="mini-output" id="phish-output"></div>
+          </article>
+
+          <article class="game-card">
+            <h3>Password Heat</h3>
+            <p>Type a sample password pattern. Do not use a real password.</p>
+            <input id="password-lab" type="text" placeholder="sample only">
+            <div class="lab-progress"><span id="password-bar"></span></div>
+            <div class="mini-output" id="password-output"></div>
+          </article>
+
+          <article class="game-card">
+            <h3>Incident Order</h3>
+            <p>Choose the first action after a suspicious login alert.</p>
+            <div class="choice-row">
+              <button data-incident="panic">Post publicly</button>
+              <button data-incident="preserve">Preserve evidence</button>
+              <button data-incident="ignore">Ignore it</button>
+            </div>
+            <div class="mini-output" id="incident-output"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lab-band lab-split">
+        <div>
+          <p class="section-kicker">Mission console</p>
+          <h2>Unlock the calm response protocol.</h2>
+          <p>
+            The lab is built around everyday defensive moves: identify the trick, slow the panic,
+            preserve evidence, and recover access without sharing secrets.
+          </p>
+          <div class="cipher-card">
+            <p class="cipher-text">Encoded phrase: <strong>13-6-1</strong></p>
+            <label for="cipher-input">Protocol keyword</label>
+            <input id="cipher-input" type="text" placeholder="hint: multi-factor authentication">
+            <button class="mini-button" type="button" id="cipher-button">Unlock</button>
+            <div class="mini-output" id="cipher-output"></div>
+          </div>
+        </div>
+        <div class="mission-stack" aria-label="Defensive mission cards">
+          <article>
+            <span class="op-code">STEP 01</span>
+            <h3>Freeze the scene</h3>
+            <p>Stop clicking, stop replying, and write down what happened while memory is fresh.</p>
+          </article>
+          <article>
+            <span class="op-code">STEP 02</span>
+            <h3>Secure the core</h3>
+            <p>Start with email, password manager, MFA settings, and recovery channels.</p>
+          </article>
+          <article>
+            <span class="op-code">STEP 03</span>
+            <h3>Close the loop</h3>
+            <p>Rotate exposed credentials, remove unknown sessions, and document final state.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="lab-band">
+        <div class="section-heading">
+          <p class="section-kicker">Network pulse</p>
+          <h2>Live-looking, fully local signal map.</h2>
+        </div>
+        <div class="node-map" id="node-map" aria-label="Animated local signal map"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>All lab interactions run locally in the browser and do not perform scans or collect credentials.</p>
+    </footer>
+    <script src="site-extras.js"></script>
+  </body>
+</html>

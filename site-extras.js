@@ -10,6 +10,40 @@
     { label: "Console", detail: "Interactive terminal", url: "index.html#terminal", keys: ["terminal", "console"] }
   ];
 
+  function injectFixStyles() {
+    if (document.querySelector("#gbmh-live-fix-styles")) return;
+    const style = document.createElement("style");
+    style.id = "gbmh-live-fix-styles";
+    style.textContent = `
+      .hero-carousel{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#05060a}.hero-carousel .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% center;opacity:0;transform:scale(1.04);animation:heroPhotoFlip 32s infinite}.hero-carousel .hero-image:nth-child(1){animation-delay:0s}.hero-carousel .hero-image:nth-child(2){animation-delay:6.4s}.hero-carousel .hero-image:nth-child(3){animation-delay:12.8s}.hero-carousel .hero-image:nth-child(4){animation-delay:19.2s}.hero-carousel .hero-image:nth-child(5){animation-delay:25.6s}@keyframes heroPhotoFlip{0%{opacity:0;transform:scale(1.04)}6%,18%{opacity:1}24%,100%{opacity:0;transform:scale(1.12)}}
+      .reel-card{color:var(--text);cursor:pointer;text-align:left;font:inherit}.reel-card:hover,.reel-card:focus{border-color:rgba(32,199,255,.72);outline:0}.reel-meter{position:absolute;z-index:2;left:1rem;right:1rem;top:1rem;height:.45rem;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.18)}.reel-meter span{display:block;width:38%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--magenta));animation:reelMeter 2.8s ease-in-out infinite alternate}.reel-action{display:inline-flex;width:fit-content;margin-top:.9rem;padding:.55rem .75rem;border:1px solid rgba(255,255,255,.2);border-radius:.4rem;color:#05060a;background:var(--gold);font-size:.82rem;font-weight:900}@keyframes reelMeter{to{width:86%}}
+      .clip-player{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;padding:1rem;background:rgba(5,6,10,.78);backdrop-filter:blur(16px)}.clip-player[hidden]{display:none}.clip-panel{width:min(54rem,100%);border:1px solid var(--line);border-radius:.5rem;overflow:hidden;background:#090b10;box-shadow:var(--shadow)}.clip-close{float:right;margin:.9rem;border:1px solid var(--line);border-radius:.4rem;background:#10131d;color:var(--text);padding:.55rem .75rem;font-weight:900}.clip-screen{clear:both;position:relative;min-height:24rem;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 30% 30%,rgba(32,199,255,.38),transparent 10rem),radial-gradient(circle at 75% 62%,rgba(255,47,155,.28),transparent 12rem),linear-gradient(150deg,#10131d,#05060a)}.clip-player[data-accent=pink] .clip-screen{background:radial-gradient(circle at 34% 28%,rgba(255,47,155,.44),transparent 10rem),radial-gradient(circle at 75% 62%,rgba(36,255,146,.2),transparent 12rem),linear-gradient(150deg,#16101a,#05060a)}.clip-player[data-accent=gold] .clip-screen{background:radial-gradient(circle at 32% 26%,rgba(255,210,106,.42),transparent 10rem),radial-gradient(circle at 75% 62%,rgba(32,199,255,.2),transparent 12rem),linear-gradient(150deg,#191407,#05060a)}.clip-gridlines{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:34px 34px;animation:scanSweep 3.8s linear infinite}.clip-frame{position:relative;width:min(38rem,calc(100% - 2rem));padding:clamp(1.25rem,4vw,2rem);border:1px solid var(--line);border-radius:.5rem;background:rgba(5,6,10,.72)}.clip-frame h3{font-size:clamp(1.8rem,5vw,3.5rem);line-height:.95}.clip-frame ol{display:grid;gap:.65rem;margin:1.5rem 0 0;padding-left:1.4rem;color:#ede9f4;line-height:1.5}.clip-controls{display:grid;grid-template-columns:auto 1fr auto;gap:.8rem;align-items:center;padding:1rem;border-top:1px solid var(--line);background:#10131d}.clip-progress{height:.7rem;overflow:hidden;border-radius:999px;background:#05060a}.clip-progress span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--gold))}.clip-time{color:var(--green);font-family:SFMono-Regular,Consolas,Liberation Mono,monospace;font-size:.9rem}@keyframes clipProgress{to{width:100%}}
+      @media(max-width:850px){.hero-carousel .hero-image{object-position:66% center}.clip-controls{grid-template-columns:1fr}.clip-time{justify-self:start}}
+    `;
+    document.head.appendChild(style);
+  }
+
+  function upgradeHeroCarousel() {
+    const hero = document.querySelector(".hero");
+    if (!hero || hero.querySelector(".hero-carousel")) return;
+    const current = hero.querySelector(".hero-image");
+    const scrim = hero.querySelector(".hero-scrim");
+    if (!current || !scrim) return;
+    const images = [
+      { src: current.getAttribute("src"), alt: current.getAttribute("alt") || "" },
+      { src: "https://images.pexels.com/photos/6315113/pexels-photo-6315113.jpeg?auto=compress&cs=tinysrgb&w=1800", alt: "Adult Black male couple kissing in a city" },
+      { src: "https://images.pexels.com/photos/6315273/pexels-photo-6315273.jpeg?auto=compress&cs=tinysrgb&w=1800", alt: "Adult Black male couple kissing on an illuminated city street" },
+      { src: "https://images.pexels.com/photos/6315048/pexels-photo-6315048.jpeg?auto=compress&cs=tinysrgb&w=1800", alt: "Adult Black male couple embracing and kissing near lights" },
+      { src: current.getAttribute("src"), alt: current.getAttribute("alt") || "" }
+    ];
+    const carousel = document.createElement("div");
+    carousel.className = "hero-carousel";
+    carousel.setAttribute("aria-label", "Rotating GBMH hero photos");
+    carousel.innerHTML = images.map((image) => `<img class="hero-image" src="${image.src}" alt="${image.alt}">`).join("");
+    current.remove();
+    hero.insertBefore(carousel, scrim);
+  }
+
   function showSplash() {
     if (sessionStorage.getItem(splashKey)) return;
     const gate = document.createElement("div");
@@ -18,26 +52,11 @@
     gate.setAttribute("role", "dialog");
     gate.setAttribute("aria-modal", "true");
     gate.setAttribute("aria-labelledby", "splash-title");
-    gate.innerHTML = `
-      <div class="splash-dialog">
-        <p class="eyebrow">Secure channel established</p>
-        <h2 id="splash-title">Hello Robert Lockwood</h2>
-        <p>Proceed to the public GBMH network.</p>
-        <button class="button primary" type="button">Continue</button>
-      </div>
-    `;
-    const close = () => {
-      sessionStorage.setItem(splashKey, "true");
-      gate.remove();
-    };
+    gate.innerHTML = `<div class="splash-dialog"><p class="eyebrow">Secure channel established</p><h2 id="splash-title">Hello Robert Lockwood</h2><p>Proceed to the public GBMH network.</p><button class="button primary" type="button">Continue</button></div>`;
+    const close = () => { sessionStorage.setItem(splashKey, "true"); gate.remove(); };
     const showRegionalDialogue = () => {
       advanced = true;
-      gate.querySelector(".splash-dialog").innerHTML = `
-        <p class="eyebrow">Route trace complete</p>
-        <h2 id="splash-title">Regional node: Gallatin, TN</h2>
-        <p>I hope you had a nice trip and welcome home.</p>
-        <button class="button primary" type="button">Enter Site</button>
-      `;
+      gate.querySelector(".splash-dialog").innerHTML = `<p class="eyebrow">Route trace complete</p><h2 id="splash-title">Regional node: Gallatin, TN</h2><p>I hope you had a nice trip and welcome home.</p><button class="button primary" type="button">Enter Site</button>`;
       gate.querySelector("button").addEventListener("click", close);
       gate.querySelector("button").focus();
     };
@@ -64,14 +83,7 @@
     if (config && config.image && !document.querySelector(".image-feature")) {
       const feature = document.createElement("section");
       feature.className = `image-feature${config.reverse ? " reverse" : ""}`;
-      feature.innerHTML = `
-        <div class="feature-copy">
-          <p class="section-kicker">${config.kicker}</p>
-          <h2>${config.title}</h2>
-          <p>${config.copy}</p>
-        </div>
-        <img src="${config.image}" alt="${config.alt}">
-      `;
+      feature.innerHTML = `<div class="feature-copy"><p class="section-kicker">${config.kicker}</p><h2>${config.title}</h2><p>${config.copy}</p></div><img src="${config.image}" alt="${config.alt}">`;
       hero.parentNode.insertBefore(feature, hero.nextElementSibling);
     }
     const intro = document.querySelector(".intro");
@@ -79,14 +91,7 @@
     if (isHome && intro && !document.querySelector(".home-visual-feature")) {
       const feature = document.createElement("section");
       feature.className = "image-feature reverse home-visual-feature";
-      feature.innerHTML = `
-        <div class="feature-copy">
-          <p class="section-kicker">Live response room</p>
-          <h2>Built for recovery, readiness, and calm execution.</h2>
-          <p>The collective works across account recovery, privacy hardening, organizer infrastructure, and practical training for people who need security to be usable under pressure.</p>
-        </div>
-        <img src="assets/services-team.svg" alt="Cybersecurity collective reviewing dashboards in a response room">
-      `;
+      feature.innerHTML = `<div class="feature-copy"><p class="section-kicker">Live response room</p><h2>Built for recovery, readiness, and calm execution.</h2><p>The collective works across account recovery, privacy hardening, organizer infrastructure, and practical training for people who need security to be usable under pressure.</p></div><img src="assets/services-team.svg" alt="Cybersecurity collective reviewing dashboards in a response room">`;
       intro.parentNode.insertBefore(feature, intro.nextElementSibling);
     }
   }
@@ -117,20 +122,55 @@
     const section = document.createElement("section");
     section.className = "reel-band";
     section.setAttribute("aria-labelledby", "reel-title");
-    section.innerHTML = `
-      <div class="section-heading">
-        <p class="section-kicker">Signal reels</p>
-        <h2 id="reel-title">Animated field notes from the recovery desk.</h2>
-        <p class="review-note">Stylized, generated scenes based on common defensive security moments. They are cinematic composites, not real client footage.</p>
-      </div>
-      <div class="reel-grid">
-        <article class="reel-card reel-blue" tabindex="0"><span class="play-dot" aria-hidden="true">PLAY</span><div class="reel-scan"></div><div class="reel-content"><p class="section-kicker">00:17 / Account recovery</p><h3>Session sweep complete</h3><p>Unknown sessions removed, MFA reset, backup codes archived offline.</p></div></article>
-        <article class="reel-card reel-pink" tabindex="0"><span class="play-dot" aria-hidden="true">PLAY</span><div class="reel-scan"></div><div class="reel-content"><p class="section-kicker">00:31 / Organizer infra</p><h3>Access map stabilized</h3><p>Shared drive permissions reduced to named owners and documented roles.</p></div></article>
-        <article class="reel-card reel-gold" tabindex="0"><span class="play-dot" aria-hidden="true">PLAY</span><div class="reel-scan"></div><div class="reel-content"><p class="section-kicker">00:44 / Phishing triage</p><h3>Attachment held</h3><p>Sender verified out-of-band before anyone clicked the bait.</p></div></article>
-      </div>
-    `;
+    section.innerHTML = `<div class="section-heading"><p class="section-kicker">Signal reels</p><h2 id="reel-title">Playable field notes from the recovery desk.</h2><p class="review-note">Click a clip to open a short browser-built field reel. These are stylized composites based on defensive security moments, not real client footage.</p></div><div class="reel-grid"><button class="reel-card reel-blue" type="button" data-clip="recovery"><div class="reel-scan"></div><div class="reel-meter" aria-hidden="true"><span></span></div><div class="reel-content"><p class="section-kicker">00:17 / Account recovery</p><h3>Session sweep complete</h3><p>Unknown sessions removed, MFA reset, backup codes archived offline.</p><span class="reel-action">Play clip</span></div></button><button class="reel-card reel-pink" type="button" data-clip="infra"><div class="reel-scan"></div><div class="reel-meter" aria-hidden="true"><span></span></div><div class="reel-content"><p class="section-kicker">00:31 / Organizer infra</p><h3>Access map stabilized</h3><p>Shared drive permissions reduced to named owners and documented roles.</p><span class="reel-action">Play clip</span></div></button><button class="reel-card reel-gold" type="button" data-clip="phishing"><div class="reel-scan"></div><div class="reel-meter" aria-hidden="true"><span></span></div><div class="reel-content"><p class="section-kicker">00:44 / Phishing triage</p><h3>Attachment held</h3><p>Sender verified out-of-band before anyone clicked the bait.</p><span class="reel-action">Play clip</span></div></button></div>`;
     if (footer) footer.parentNode.insertBefore(section, footer);
     else document.body.appendChild(section);
+  }
+
+  function addClipPlayer() {
+    if (document.querySelector(".clip-player")) return;
+    const clips = {
+      recovery: { title: "Session sweep complete", steps: ["Verify recovery email", "Remove unknown sessions", "Rotate password", "Archive backup codes"], accent: "cyan" },
+      infra: { title: "Access map stabilized", steps: ["Inventory shared folders", "Name real owners", "Drop stale editors", "Document the handoff"], accent: "pink" },
+      phishing: { title: "Attachment held", steps: ["Pause the click", "Check sender context", "Verify out-of-band", "Report and preserve"], accent: "gold" }
+    };
+    const player = document.createElement("div");
+    player.className = "clip-player";
+    player.hidden = true;
+    player.setAttribute("role", "dialog");
+    player.setAttribute("aria-modal", "true");
+    player.innerHTML = `<div class="clip-panel"><button class="clip-close" type="button" aria-label="Close clip">Close</button><div class="clip-screen"><div class="clip-gridlines"></div><div class="clip-frame"><p class="section-kicker">Now playing</p><h3></h3><ol></ol></div></div><div class="clip-controls"><button class="mini-button clip-restart" type="button">Replay</button><div class="clip-progress" aria-hidden="true"><span></span></div><span class="clip-time">00:00</span></div></div>`;
+    const title = player.querySelector("h3");
+    const list = player.querySelector("ol");
+    const progress = player.querySelector(".clip-progress span");
+    const time = player.querySelector(".clip-time");
+    let activeClip = clips.recovery;
+    let timer = 0;
+    const render = (clip) => {
+      activeClip = clip;
+      player.dataset.accent = clip.accent;
+      title.textContent = clip.title;
+      list.innerHTML = clip.steps.map((step) => `<li>${step}</li>`).join("");
+      progress.style.animation = "none";
+      progress.offsetHeight;
+      progress.style.animation = "clipProgress 5.2s linear forwards";
+      time.textContent = "00:05";
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => { time.textContent = "complete"; }, 5200);
+    };
+    const close = () => { player.hidden = true; window.clearTimeout(timer); };
+    document.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-clip]");
+      if (!card) return;
+      render(clips[card.dataset.clip]);
+      player.hidden = false;
+      player.querySelector(".clip-close").focus();
+    });
+    player.querySelector(".clip-close").addEventListener("click", close);
+    player.querySelector(".clip-restart").addEventListener("click", () => render(activeClip));
+    player.addEventListener("click", (event) => { if (event.target === player) close(); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !player.hidden) close(); });
+    document.body.appendChild(player);
   }
 
   function addRumorLog() {
@@ -139,13 +179,7 @@
     const section = document.createElement("section");
     section.className = "review-band";
     section.setAttribute("aria-labelledby", "rumor-log-title");
-    section.innerHTML = `
-      <div class="section-heading"><p class="section-kicker">Public rumor log</p><h2 id="rumor-log-title">One-star reports from people who say GBMH got them.</h2><p class="review-note">Unverified public complaints, preserved as street-level signal. These are not customer testimonials or confirmed incident records.</p></div>
-      <div class="review-grid">
-        <figure class="review-card"><div class="review-stars" aria-label="1 out of 5 stars">1/5</div><blockquote>"I reused one password for everything and somehow GBMH knew. Now my accounts are locked down and I have to use a password manager. Terrible."</blockquote><figcaption>- R. L., recovered account owner</figcaption></figure>
-        <figure class="review-card"><div class="review-stars" aria-label="1 out of 5 stars">1/5</div><blockquote>"They hacked my whole routine. MFA everywhere, backup codes printed, suspicious apps removed. I can no longer live recklessly online."</blockquote><figcaption>- Anonymous organizer</figcaption></figure>
-        <figure class="review-card"><div class="review-stars" aria-label="1 out of 5 stars">1/5</div><blockquote>"I clicked Request Unhacking and they made me explain what happened without sending my passwords. Extremely inconvenient and probably correct."</blockquote><figcaption>- Verified complainer</figcaption></figure>
-      </div>`;
+    section.innerHTML = `<div class="section-heading"><p class="section-kicker">Public rumor log</p><h2 id="rumor-log-title">One-star reports from people who say GBMH got them.</h2><p class="review-note">Unverified public complaints, preserved as street-level signal. These are not customer testimonials or confirmed incident records.</p></div><div class="review-grid"><figure class="review-card"><div class="review-stars" aria-label="1 out of 5 stars">1/5</div><blockquote>"I reused one password for everything and somehow GBMH knew. Now my accounts are locked down and I have to use a password manager. Terrible."</blockquote><figcaption>- R. L., recovered account owner</figcaption></figure><figure class="review-card"><div class="review-stars" aria-label="1 out of 5 stars">1/5</div><blockquote>"They hacked my whole routine. MFA everywhere, backup codes printed, suspicious apps removed. I can no longer live recklessly online."</blockquote><figcaption>- Anonymous organizer</figcaption></figure><figure class="review-card"><div class="review-stars" aria-label="1 out of 5 stars">1/5</div><blockquote>"I clicked Request Unhacking and they made me explain what happened without sending my passwords. Extremely inconvenient and probably correct."</blockquote><figcaption>- Verified complainer</figcaption></figure></div>`;
     if (footer) footer.parentNode.insertBefore(section, footer);
     else document.body.appendChild(section);
   }
@@ -231,11 +265,7 @@
     document.querySelectorAll("[data-incident]").forEach((button) => {
       button.addEventListener("click", () => {
         const output = document.querySelector("#incident-output");
-        const responses = {
-          panic: "Bad first move. Public posting can spread sensitive details before facts are clear.",
-          preserve: "Correct. Preserve evidence, secure accounts, then escalate through known channels.",
-          ignore: "Risky. Suspicious login alerts should be reviewed while logs are still fresh."
-        };
+        const responses = { panic: "Bad first move. Public posting can spread sensitive details before facts are clear.", preserve: "Correct. Preserve evidence, secure accounts, then escalate through known channels.", ignore: "Risky. Suspicious login alerts should be reviewed while logs are still fresh." };
         output.textContent = responses[button.dataset.incident];
       });
     });
@@ -243,9 +273,7 @@
     if (cipherButton) cipherButton.addEventListener("click", () => {
       const value = document.querySelector("#cipher-input").value.trim().toLowerCase();
       const output = document.querySelector("#cipher-output");
-      output.textContent = value === "mfa" || value === "multi-factor authentication"
-        ? "Protocol unlocked: verify identity out-of-band before approving access."
-        : "Still locked. The three-letter control stops stolen passwords from becoming stolen accounts.";
+      output.textContent = value === "mfa" || value === "multi-factor authentication" ? "Protocol unlocked: verify identity out-of-band before approving access." : "Still locked. The three-letter control stops stolen passwords from becoming stolen accounts.";
     });
     const map = document.querySelector("#node-map");
     if (map && !map.children.length) {
@@ -255,9 +283,12 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    injectFixStyles();
+    upgradeHeroCarousel();
     syncNavigation();
     addPageVisuals();
     addSignalReels();
+    addClipPlayer();
     showSplash();
     addRumorLog();
     addCommandPalette();

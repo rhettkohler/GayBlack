@@ -5,6 +5,7 @@
     if (sessionStorage.getItem(splashKey)) return;
 
     const gate = document.createElement("div");
+    let advanced = false;
     gate.className = "splash-gate";
     gate.setAttribute("role", "dialog");
     gate.setAttribute("aria-modal", "true");
@@ -23,9 +24,25 @@
       gate.remove();
     };
 
-    gate.querySelector("button").addEventListener("click", close);
+    const showRegionalDialogue = () => {
+      advanced = true;
+      gate.querySelector(".splash-dialog").innerHTML = `
+        <p class="eyebrow">Route trace complete</p>
+        <h2 id="splash-title">Regional node: Gallatin, TN</h2>
+        <p>I hope you had a nice trip and welcome home.</p>
+        <button class="button primary" type="button">Enter Site</button>
+      `;
+      gate.querySelector("button").addEventListener("click", close);
+      gate.querySelector("button").focus();
+    };
+
+    gate.querySelector("button").addEventListener("click", showRegionalDialogue);
     gate.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" || event.key === "Enter") close();
+      if (event.key === "Escape") close();
+      if (event.key === "Enter") {
+        if (advanced) close();
+        else showRegionalDialogue();
+      }
     });
     document.body.appendChild(gate);
     gate.querySelector("button").focus();

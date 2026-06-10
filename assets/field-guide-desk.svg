@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Security checklist desk</title>
+  <desc id="desc">A neon desk scene with laptop, phone lock screen, security key, backup drive, and open recovery checklist.</desc>
+  <defs>
+    <linearGradient id="desk" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#090a0f"/><stop offset="1" stop-color="#1b1420"/></linearGradient>
+    <linearGradient id="accent" x1="0" x2="1"><stop offset="0" stop-color="#20c7ff"/><stop offset="1" stop-color="#ff2f9b"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="#05060a"/>
+  <path d="M0 260h1600v640H0z" fill="url(#desk)"/>
+  <rect x="130" y="130" width="620" height="390" rx="22" fill="#08111a" stroke="#20c7ff" stroke-opacity=".55" stroke-width="4"/>
+  <path d="M180 210h510M180 270h240M460 270h230M180 330h160M380 330h310" stroke="#20c7ff" stroke-opacity=".45" stroke-width="10"/>
+  <path d="M250 430h370" stroke="#39e77b" stroke-width="7"/><path d="M250 455h250" stroke="#ff2f9b" stroke-width="7"/>
+  <rect x="850" y="250" width="170" height="340" rx="36" fill="#080a0f" stroke="#ff2f9b" stroke-opacity=".55" stroke-width="4"/>
+  <path d="M935 368v86" stroke="#20c7ff" stroke-width="15" stroke-linecap="round"/><rect x="900" y="430" width="70" height="55" rx="10" fill="#20c7ff"/>
+  <rect x="620" y="560" width="450" height="260" rx="18" fill="#f7f3ea"/>
+  <path d="M672 625h340M672 682h300M672 739h330" stroke="#10131d" stroke-opacity=".45" stroke-width="9"/>
+  <g fill="none" stroke="#10131d" stroke-width="5"><rect x="645" y="608" width="26" height="26"/><rect x="645" y="665" width="26" height="26"/><rect x="645" y="722" width="26" height="26"/></g>
+  <path d="M792 626l18 20 45-52" fill="none" stroke="#39e77b" stroke-width="9"/>
+  <rect x="1130" y="590" width="190" height="120" rx="18" fill="#0a1018" stroke="#ffc94d" stroke-opacity=".55"/>
+  <rect x="1120" y="405" width="95" height="32" rx="10" fill="url(#accent)" filter="url(#glow)"/>
+  <rect x="1290" y="330" width="135" height="240" rx="16" fill="#0a1018" stroke="#20c7ff" stroke-opacity=".45"/>
+  <path d="M1320 390h75M1320 440h75M1320 490h75" stroke="#20c7ff" stroke-opacity=".5" stroke-width="10"/>
+</svg>

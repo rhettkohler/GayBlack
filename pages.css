@@ -118,6 +118,7 @@
   width: 100%;
   aspect-ratio: 1.42;
   object-fit: cover;
+  object-position: center;
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   box-shadow: var(--shadow);

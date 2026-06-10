@@ -32,9 +32,9 @@
   }
 
   function addRumorLog() {
-    const footer = document.querySelector("footer");
-    if (!footer || document.querySelector(".review-band")) return;
+    if (document.querySelector(".review-band")) return;
 
+    const footer = document.querySelector("footer");
     const section = document.createElement("section");
     section.className = "review-band";
     section.setAttribute("aria-labelledby", "rumor-log-title");
@@ -62,7 +62,13 @@
         </figure>
       </div>
     `;
-    footer.parentNode.insertBefore(section, footer);
+
+    if (footer) {
+      footer.parentNode.insertBefore(section, footer);
+      return;
+    }
+
+    document.body.appendChild(section);
   }
 
   document.addEventListener("DOMContentLoaded", () => {

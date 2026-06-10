@@ -1,6 +1,6 @@
 # Gay Black Men Hackers
 
-Static spoof website ready for GitHub Pages.
+Static website ready for GitHub Pages.
 
 ## Deploy with GitHub Pages
 

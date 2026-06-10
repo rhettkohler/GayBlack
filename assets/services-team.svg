@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cybersecurity response room</title>
+  <desc id="desc">A stylized neon response room with analysts, dashboards, laptops, and community defense visuals.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#05060a"/>
+      <stop offset=".52" stop-color="#10131d"/>
+      <stop offset="1" stop-color="#16101d"/>
+    </linearGradient>
+    <linearGradient id="cyanMagenta" x1="0" x2="1">
+      <stop offset="0" stop-color="#20c7ff"/>
+      <stop offset="1" stop-color="#ff2f9b"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="820" y="110" width="520" height="270" rx="18" fill="#080a0f" stroke="#20c7ff" stroke-opacity=".55" stroke-width="3"/>
+  <path d="M860 320h430M860 275h130M1010 275h280M860 230h210M1090 230h200M860 185h80M960 185h330" stroke="#20c7ff" stroke-opacity=".5" stroke-width="8"/>
+  <path d="M880 330l90-70 96 28 80-92 124 64" fill="none" stroke="#ff2f9b" stroke-width="7"/>
+  <circle cx="970" cy="260" r="12" fill="#ffc94d"/><circle cx="1146" cy="196" r="12" fill="#39e77b"/>
+  <rect x="980" y="405" width="320" height="178" rx="14" fill="#0b1020" stroke="#ffc94d" stroke-opacity=".55"/>
+  <path d="M1018 455h240M1018 500h190M1018 545h220" stroke="#ffc94d" stroke-opacity=".5" stroke-width="12"/>
+  <ellipse cx="820" cy="735" rx="500" ry="76" fill="#05060a"/>
+  <rect x="370" y="475" width="250" height="150" rx="14" fill="#0a1018" stroke="#20c7ff" stroke-opacity=".4"/>
+  <rect x="690" y="455" width="280" height="170" rx="14" fill="#0a1018" stroke="#ff2f9b" stroke-opacity=".45"/>
+  <rect x="1035" y="470" width="250" height="155" rx="14" fill="#0a1018" stroke="#39e77b" stroke-opacity=".38"/>
+  <g fill="#2b1b28" stroke="url(#cyanMagenta)" stroke-width="4">
+    <circle cx="430" cy="405" r="58"/><circle cx="735" cy="390" r="60"/><circle cx="1105" cy="410" r="56"/><circle cx="1265" cy="420" r="54"/>
+  </g>
+  <g fill="#11151a">
+    <path d="M340 680c20-130 155-130 180 0z"/><path d="M630 680c24-144 166-144 190 0z"/><path d="M1018 680c24-132 150-132 176 0z"/><path d="M1190 680c20-120 140-120 164 0z"/>
+  </g>
+  <path d="M120 130h510" stroke="url(#cyanMagenta)" stroke-width="10" filter="url(#glow)"/>
+  <path d="M120 170h310" stroke="#ffc94d" stroke-opacity=".8" stroke-width="5"/>
+</svg>

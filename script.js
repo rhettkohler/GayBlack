@@ -9,6 +9,11 @@ const commands = {
     "  manifesto   print the operating doctrine",
     "  scan        run a readiness scan",
     "  briefing    show current advisory",
+    "  trace       display a local signal trace",
+    "  map         list active site nodes",
+    "  lab         open the defense lab",
+    "  request     open the recovery form",
+    "  status      show network status",
     "  clear       wipe this console"
   ].join("\n"),
   manifesto: [
@@ -29,6 +34,26 @@ const commands = {
     "phishing campaigns continue to target community organizers and creators.",
     "verify sender identity out-of-band before opening attachments or sharing codes.",
     "report suspicious login prompts and preserve screenshots for incident review."
+  ].join("\n"),
+  trace: [
+    "trace route:",
+    "  visitor -> public gateway -> gbmh.men -> defense lab",
+    "regional node: Gallatin, TN",
+    "status: browser-local simulation only"
+  ].join("\n"),
+  map: [
+    "active nodes:",
+    "  /services.html            recovery and readiness desk",
+    "  /field-guide.html         defensive checklists",
+    "  /lab.html                 interactive range",
+    "  /request-unhacking.html   private intake"
+  ].join("\n"),
+  status: [
+    "network status:",
+    "  public site: online",
+    "  terminal: local",
+    "  lab modules: ready",
+    "  credential collection: disabled"
   ].join("\n")
 };
 
@@ -53,6 +78,18 @@ form.addEventListener("submit", (event) => {
 
   if (value === "clear") {
     output.textContent = "";
+    return;
+  }
+
+  if (value === "lab") {
+    print("opening defense lab...");
+    window.location.href = "lab.html";
+    return;
+  }
+
+  if (value === "request") {
+    print("opening recovery form...");
+    window.location.href = "request-unhacking.html";
     return;
   }
 

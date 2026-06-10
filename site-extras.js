@@ -67,8 +67,8 @@
         kicker: "Incident room",
         title: "Calm response when the situation is loud.",
         copy: "GBMH approaches every request with clear scope, documented steps, and practical recovery guidance. The goal is to reduce panic, preserve evidence, and get people back into safer control.",
-        image: "assets/services-team.svg",
-        alt: "Cybersecurity team reviewing incident response dashboards"
+        image: "https://images.pexels.com/photos/8735404/pexels-photo-8735404.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        alt: "Gay couple holding hands outdoors near a mural"
       },
       {
         match: "field-guide.html",
@@ -76,8 +76,8 @@
         kicker: "Preparation desk",
         title: "Security gets easier when the checklist is visible.",
         copy: "Keep recovery paths, backups, MFA, and device updates organized before a crisis. Small habits compound into real resilience when something breaks.",
-        image: "assets/field-guide-desk.svg",
-        alt: "Desk with laptop, phone, security key, backup drive, and recovery checklist",
+        image: "https://images.pexels.com/photos/6315186/pexels-photo-6315186.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        alt: "Black gay couple embracing in a subway train",
         reverse: true
       },
       {
@@ -86,12 +86,27 @@
         kicker: "Private intake",
         title: "Tell us what happened without exposing secrets.",
         copy: "The form is designed for triage, not credential collection. Share timing, affected platforms, and what you have already tried so the next step can be scoped safely.",
-        image: "assets/request-intake.svg",
-        alt: "Cybersecurity responder reviewing a private recovery intake request"
+        image: "https://images.pexels.com/photos/4657950/pexels-photo-4657950.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        alt: "Gay couple holding hands while walking in a park"
+      },
+      {
+        match: "lab.html",
+        heroClass: "guide-hero",
+        kicker: "Defense lab",
+        title: "Practice drills inside a network built around trust.",
+        copy: "The lab keeps the cyber games playful and practical while the visuals stay rooted in queer public presence, care, and connection.",
+        image: "https://images.pexels.com/photos/8735395/pexels-photo-8735395.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        alt: "Gay couple holding hands while leaning together outdoors",
+        reverse: true
       },
       {
         match: "thank-you.html",
-        heroClass: "request-hero"
+        heroClass: "request-hero",
+        kicker: "Signal received",
+        title: "Your request entered the queue.",
+        copy: "The confirmation page keeps the same visual language: visible love, clean process, and calm next steps.",
+        image: "https://images.pexels.com/photos/6315257/pexels-photo-6315257.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        alt: "Black gay couple sitting close and holding hands"
       }
     ];
 
@@ -112,21 +127,6 @@
       hero.parentNode.insertBefore(feature, hero.nextElementSibling);
     }
 
-    const intro = document.querySelector(".intro");
-    const isHome = path.endsWith("/") || path.endsWith("/GayBlack") || path.endsWith("index.html") || path === "/";
-    if (isHome && intro && !document.querySelector(".home-visual-feature")) {
-      const feature = document.createElement("section");
-      feature.className = "image-feature reverse home-visual-feature";
-      feature.innerHTML = `
-        <div class="feature-copy">
-          <p class="section-kicker">Live response room</p>
-          <h2>Built for recovery, readiness, and calm execution.</h2>
-          <p>The collective works across account recovery, privacy hardening, organizer infrastructure, and practical training for people who need security to be usable under pressure.</p>
-        </div>
-        <img src="assets/services-team.svg" alt="Cybersecurity collective reviewing dashboards in a response room">
-      `;
-      intro.parentNode.insertBefore(feature, intro.nextElementSibling);
-    }
   }
 
   function syncNavigation() {
@@ -311,19 +311,28 @@
       </div>
       <div class="review-grid">
         <figure class="review-card">
+          <div class="review-profile">
+            <img src="https://images.pexels.com/photos/6315186/pexels-photo-6315186.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
+            <div><strong>R. L.</strong><span>Recovered account owner</span></div>
+          </div>
           <div class="review-stars" aria-label="1 out of 5 stars">1/5</div>
           <blockquote>"I reused one password for everything and somehow GBMH knew. Now my accounts are locked down and I have to use a password manager. Terrible."</blockquote>
-          <figcaption>- R. L., recovered account owner</figcaption>
         </figure>
         <figure class="review-card">
+          <div class="review-profile">
+            <img src="https://images.pexels.com/photos/8735395/pexels-photo-8735395.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
+            <div><strong>Anonymous organizer</strong><span>Group chat survivor</span></div>
+          </div>
           <div class="review-stars" aria-label="1 out of 5 stars">1/5</div>
           <blockquote>"They hacked my whole routine. MFA everywhere, backup codes printed, suspicious apps removed. I can no longer live recklessly online."</blockquote>
-          <figcaption>- Anonymous organizer</figcaption>
         </figure>
         <figure class="review-card">
+          <div class="review-profile">
+            <img src="https://images.pexels.com/photos/8735404/pexels-photo-8735404.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
+            <div><strong>Verified complainer</strong><span>Unhacking applicant</span></div>
+          </div>
           <div class="review-stars" aria-label="1 out of 5 stars">1/5</div>
           <blockquote>"I clicked Request Unhacking and they made me explain what happened without sending my passwords. Extremely inconvenient and probably correct."</blockquote>
-          <figcaption>- Verified complainer</figcaption>
         </figure>
       </div>
     `;
@@ -338,6 +347,9 @@
 
   function addAffinityGallery() {
     if (document.querySelector(".affinity-gallery")) return;
+    const path = window.location.pathname;
+    const isHome = path.endsWith("/") || path.endsWith("/GayBlack") || path.endsWith("index.html") || path === "/";
+    if (isHome) return;
 
     const images = [
       {
@@ -357,6 +369,24 @@
         alt: "Two adult Black men kissing in warm city light",
         label: "Home channel",
         copy: "Real warmth belongs on the public face of the network."
+      },
+      {
+        src: "https://images.pexels.com/photos/6315186/pexels-photo-6315186.jpeg?auto=compress&cs=tinysrgb&w=1800",
+        alt: "Black gay couple embracing in public transit",
+        label: "Transit handshake",
+        copy: "Every route through the city can carry a little signal and softness."
+      },
+      {
+        src: "https://images.pexels.com/photos/8735404/pexels-photo-8735404.jpeg?auto=compress&cs=tinysrgb&w=1800",
+        alt: "Gay couple holding hands outdoors",
+        label: "Public key exchange",
+        copy: "Hands held in daylight, no apology required."
+      },
+      {
+        src: "https://images.pexels.com/photos/4657950/pexels-photo-4657950.jpeg?auto=compress&cs=tinysrgb&w=1800",
+        alt: "Gay couple holding hands in a park",
+        label: "Green path",
+        copy: "Care is an infrastructure too."
       }
     ];
 
@@ -383,7 +413,7 @@
       <p class="affinity-credit">Photos by <a href="https://www.pexels.com/@uriel-mont-627169/">Uriel Mont via Pexels</a>.</p>
     `;
 
-    const anchor = document.querySelector(".review-band") || document.querySelector(".reel-band") || document.querySelector("footer");
+    const anchor = document.querySelector(".image-feature")?.nextElementSibling || document.querySelector(".review-band") || document.querySelector(".reel-band") || document.querySelector("footer");
     if (anchor && anchor.parentNode) {
       anchor.parentNode.insertBefore(section, anchor);
       return;

@@ -6,29 +6,29 @@ const commands = {
   help: [
     "available commands:",
     "  help        show this menu",
-    "  manifesto   print the official fake doctrine",
-    "  scan        run a harmless vibe scan",
-    "  brunch      decrypt the reservation status",
-    "  clear       wipe this prop terminal"
+    "  manifesto   print the operating doctrine",
+    "  scan        run a readiness scan",
+    "  briefing    show current advisory",
+    "  clear       wipe this console"
   ].join("\n"),
   manifesto: [
     "GBMH doctrine:",
     "  1. secure the group chat",
     "  2. document the process",
-    "  3. hydrate before incident response",
-    "  4. never deploy in a panic outfit"
+    "  3. protect people before platforms",
+    "  4. keep every action lawful, consensual, and accountable"
   ].join("\n"),
   scan: [
-    "running vibe scan...",
-    "ports checked: kindness, competence, audacity",
-    "findings: 0 critical, 2 fabulous, 1 calendar conflict",
-    "recommendation: enable MFA and mind your business"
+    "running readiness scan...",
+    "controls checked: backups, MFA, password manager, recovery contacts",
+    "findings: 0 critical, 2 recommended improvements",
+    "recommendation: rotate shared passwords and verify recovery email access"
   ].join("\n"),
-  brunch: [
-    "decrypting brunch.enc...",
-    "party size: 8-ish",
-    "reservation confidence: medium",
-    "threat actor: the person who said 'maybe' again"
+  briefing: [
+    "current advisory:",
+    "phishing campaigns continue to target community organizers and creators.",
+    "verify sender identity out-of-band before opening attachments or sharing codes.",
+    "report suspicious login prompts and preserve screenshots for incident review."
   ].join("\n")
 };
 
@@ -38,8 +38,8 @@ function print(text = "") {
 }
 
 function boot() {
-  print("Gay Black Men Hackers spoof terminal v1.0");
-  print("No networks were harmed in the making of this interface.");
+  print("Gay Black Men Hackers console v1.0");
+  print("Defense-first operations. Lawful access only.");
   print("Type 'help' and press Enter.");
 }
 
@@ -56,7 +56,7 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  print(commands[value] || `command not found: ${value}. This is satire, not Kali Linux.`);
+  print(commands[value] || `command not found: ${value}. Try 'help' for available commands.`);
 });
 
 boot();

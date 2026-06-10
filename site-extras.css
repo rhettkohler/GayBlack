@@ -77,6 +77,12 @@
   line-height: 1.7;
 }
 
+@media (max-width: 850px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .quick-access {
   position: fixed;
   right: 1rem;
@@ -198,7 +204,16 @@
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   background: #080a0f;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
   box-shadow: var(--shadow);
+}
+
+.reel-card:hover,
+.reel-card:focus {
+  border-color: rgba(32, 199, 255, 0.72);
+  outline: 0;
 }
 
 .reel-card::before {
@@ -252,20 +267,44 @@
   background: linear-gradient(180deg, transparent, rgba(5, 6, 10, 0.92) 26%);
 }
 
-.play-dot {
+.reel-meter {
   position: absolute;
-  top: 1rem;
+  z-index: 2;
   left: 1rem;
-  min-width: 3rem;
-  height: 3rem;
-  padding: 0 0.7rem;
-  display: grid;
-  place-items: center;
+  right: 1rem;
+  top: 1rem;
+  height: 0.45rem;
   border-radius: 999px;
-  background: rgba(247, 243, 234, 0.92);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.reel-meter span {
+  display: block;
+  width: 38%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  animation: reelMeter 2.8s ease-in-out infinite alternate;
+}
+
+.reel-action {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.4rem;
   color: #05060a;
-  font-size: 0.72rem;
+  background: var(--gold);
+  font-size: 0.82rem;
   font-weight: 900;
+}
+
+@keyframes reelMeter {
+  to {
+    width: 86%;
+  }
 }
 
 @keyframes reelPulse {
@@ -285,6 +324,138 @@
   }
   to {
     background-position: 0 80px, 520px 0;
+  }
+}
+
+.clip-player {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(5, 6, 10, 0.78);
+  backdrop-filter: blur(16px);
+}
+
+.clip-player[hidden] {
+  display: none;
+}
+
+.clip-panel {
+  width: min(54rem, 100%);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #090b10;
+  box-shadow: var(--shadow);
+}
+
+.clip-close {
+  float: right;
+  margin: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: #10131d;
+  color: var(--text);
+  padding: 0.55rem 0.75rem;
+  font-weight: 900;
+}
+
+.clip-screen {
+  clear: both;
+  position: relative;
+  min-height: 24rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(32, 199, 255, 0.38), transparent 10rem),
+    radial-gradient(circle at 75% 62%, rgba(255, 47, 155, 0.28), transparent 12rem),
+    linear-gradient(150deg, #10131d, #05060a);
+}
+
+.clip-player[data-accent="pink"] .clip-screen {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 47, 155, 0.44), transparent 10rem),
+    radial-gradient(circle at 75% 62%, rgba(36, 255, 146, 0.2), transparent 12rem),
+    linear-gradient(150deg, #16101a, #05060a);
+}
+
+.clip-player[data-accent="gold"] .clip-screen {
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 210, 106, 0.42), transparent 10rem),
+    radial-gradient(circle at 75% 62%, rgba(32, 199, 255, 0.2), transparent 12rem),
+    linear-gradient(150deg, #191407, #05060a);
+}
+
+.clip-gridlines {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 34px 34px;
+  animation: scanSweep 3.8s linear infinite;
+}
+
+.clip-frame {
+  position: relative;
+  width: min(38rem, calc(100% - 2rem));
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(5, 6, 10, 0.72);
+}
+
+.clip-frame h3 {
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  line-height: 0.95;
+}
+
+.clip-frame ol {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+  padding-left: 1.4rem;
+  color: #ede9f4;
+  line-height: 1.5;
+}
+
+.clip-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid var(--line);
+  background: #10131d;
+}
+
+.clip-progress {
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #05060a;
+}
+
+.clip-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--gold));
+}
+
+.clip-time {
+  color: var(--green);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.9rem;
+}
+
+@keyframes clipProgress {
+  to {
+    width: 100%;
   }
 }
 
@@ -442,9 +613,71 @@
   transition: width 0.3s ease;
 }
 
+.affinity-gallery {
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(246, 74, 138, 0.16), transparent 28rem),
+    radial-gradient(circle at 82% 10%, rgba(32, 199, 255, 0.12), transparent 25rem),
+    #080910;
+}
+
+.affinity-grid {
+  max-width: 1180px;
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.affinity-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: var(--shadow);
+}
+
+.affinity-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.affinity-card figcaption {
+  min-height: 8.5rem;
+  padding: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.affinity-card strong {
+  color: var(--text);
+  font-size: 1.02rem;
+}
+
+.affinity-card span,
+.affinity-credit {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.affinity-credit {
+  max-width: 1180px;
+  margin: 1rem auto 0;
+  font-size: 0.86rem;
+}
+
+.affinity-credit a {
+  color: var(--cyan);
+}
+
 @media (max-width: 850px) {
-  .review-grid,
   .reel-grid,
+  .affinity-grid,
   .lab-grid,
   .game-grid,
   .lab-split {

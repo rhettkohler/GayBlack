@@ -1,15 +1,16 @@
-# Gay Black Men Hackers
+# LotLine Pro Striping Website
 
-Static website ready for GitHub Pages.
+Static website for a parking lot striping business, ready for GitHub Pages.
 
-## Deploy with GitHub Pages
+## Pages
 
-1. Create a GitHub repository.
-2. Upload everything in this folder to the repository root, including `index.html`, `styles.css`, `script.js`, `.nojekyll`, and `assets/`.
-3. In GitHub, go to Settings -> Pages.
-4. Set Source to "Deploy from a branch".
-5. Choose `main` and `/root`, then save.
+- `index.html` - homepage with services, process, project imagery, and quote CTA.
+- `request-a-quote.html` - quote request page that opens a prepared email draft.
 
-GitHub will publish the site at a URL like:
+## Quote Email
 
-`https://<username>.github.io/<repository-name>/`
+The quote form currently sends to `quotes@example.com` in `script.js`. Replace `QUOTE_EMAIL` with the new inquiry mailbox once it is created.
+
+## Imagery
+
+Temporary stock imagery is linked from Unsplash and Pexels. Replace with original project photos when available.

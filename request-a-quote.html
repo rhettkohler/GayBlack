@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Request a Quote | LotLine Pro Striping</title>
+    <meta
+      name="description"
+      content="Request a parking lot striping quote for stall striping, ADA markings, arrows, crosswalks, and curb painting."
+    >
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="LotLine Pro Striping home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>LotLine Pro Striping</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#work">Work</a>
+        <a class="nav-cta" href="request-a-quote.html" aria-current="page">Request a Quote</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="quote-hero" aria-labelledby="quote-page-title">
+        <img
+          src="https://images.unsplash.com/photo-1772369612500-e1643da23e8e?auto=format&fit=crop&w=1800&q=82"
+          alt="Geometric white parking lot lines on asphalt"
+        >
+        <div class="quote-hero-copy">
+          <p class="eyebrow">Quote request</p>
+          <h1 id="quote-page-title">Tell us what needs striping.</h1>
+          <p>
+            Add the property details, preferred timing, and scope. The button opens a prepared email so you
+            can review everything before sending.
+          </p>
+        </div>
+      </section>
+
+      <section class="quote-layout" aria-label="Quote form">
+        <form id="quote-form" class="quote-form">
+          <label>
+            Name
+            <input name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Company or property
+            <input name="company" autocomplete="organization">
+          </label>
+          <label>
+            Phone
+            <input name="phone" autocomplete="tel">
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label class="wide">
+            Property address
+            <input name="address" autocomplete="street-address" required>
+          </label>
+          <label>
+            Lot type
+            <select name="lotType">
+              <option>Retail or office</option>
+              <option>HOA or apartment community</option>
+              <option>Warehouse or industrial</option>
+              <option>Church, school, or nonprofit</option>
+              <option>Other commercial lot</option>
+            </select>
+          </label>
+          <label>
+            Preferred timing
+            <select name="timing">
+              <option>As soon as possible</option>
+              <option>Within 2 weeks</option>
+              <option>Within 30 days</option>
+              <option>Flexible</option>
+            </select>
+          </label>
+          <label class="wide">
+            What do you need striped?
+            <textarea
+              name="scope"
+              rows="6"
+              placeholder="Example: restripe 80 stalls, repaint ADA spaces, add arrows and curb paint near the entrance."
+              required
+            ></textarea>
+          </label>
+          <label class="wide">
+            Notes, access instructions, or photo links
+            <textarea name="notes" rows="4"></textarea>
+          </label>
+          <button class="button primary" type="submit">Open Email Quote Request</button>
+          <p class="form-note">
+            Placeholder destination:
+            <a id="quote-email-link" href="mailto:quotes@example.com">quotes@example.com</a>.
+            Replace this once the new inquiry mailbox is ready.
+          </p>
+        </form>
+
+        <aside class="quote-aside">
+          <h2>Helpful details to include</h2>
+          <ul class="check-list">
+            <li>Approximate number of spaces</li>
+            <li>ADA stalls or accessibility needs</li>
+            <li>Crosswalks, arrows, fire lanes, or curb paint</li>
+            <li>Best time to access the lot</li>
+            <li>Photos or a map pin of the property</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>LotLine Pro Striping</strong>
+        <p>Parking lot striping, ADA markings, curb paint, and pavement marking for commercial properties.</p>
+      </div>
+      <p>
+        Temporary imagery from
+        <a href="https://unsplash.com/">Unsplash</a>
+        and
+        <a href="https://www.pexels.com/">Pexels</a>.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
